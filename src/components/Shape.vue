@@ -15,6 +15,10 @@ export default {
             type: [String, Number],
             default: 100
         },
+        opacity: {
+            type: [String, Number],
+            default: 1
+        },
         shape: {
             type: String,
             default: 'Rect'
@@ -40,11 +44,12 @@ export default {
     mounted() {
         const opts = {
             shape: this.cmpShape,
-            x: parseInt(this.x),
-            y: parseInt(this.y),
-            width: parseInt(this.width),
-            height: parseInt(this.height),
-            fill: this.fill
+            x: parseFloat(this.x),
+            y: parseFloat(this.y),
+            width: parseFloat(this.width),
+            height: parseFloat(this.height),
+            fill: this.fill,
+            opacity: parseFloat(this.opacity)
         }
 
         this.id = this.$parent.addShape(opts)
@@ -69,6 +74,9 @@ export default {
         },
         fill(newVal) {
             this.$parent.updateShape(this.id, 'fill', newVal)
+        },
+        opacity(newVal) {
+            this.$parent.updateShape(this.id, 'opacity', newVal)
         }
     }
 }
