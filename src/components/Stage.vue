@@ -6,10 +6,9 @@
             class="canvas"
             :width="cmpWidth"
             :height="cmpHeight"
-            ref="canvas"/>
+            ref="canvas"></canvas>
 
-        <slot
-            @addShape="addShape"/>
+        <slot />
 
     </div>
 
@@ -45,27 +44,6 @@ export default {
         if (!this.stageReady) {
             this.setupStage()
         }
-
-        // console.log(this.)
-
-        // // add canvas element
-        // var layer = new Konva.Layer()
-        // this.stage.add(layer)
-        //
-        // // create shape
-        // var box = new Konva.Rect({
-        //     x: 50,
-        //     y: 50,
-        //     width: 100,
-        //     height: 50,
-        //     fill: '#00D2FF',
-        //     stroke: 'black',
-        //     strokeWidth: 4,
-        //     draggable: true
-        // })
-        // layer.add(box)
-        //
-        // layer.draw()
     },
     computed: {
         cmpWidth() {
