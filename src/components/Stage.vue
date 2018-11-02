@@ -8,7 +8,8 @@
             :height="cmpHeight"
             ref="canvas"/>
 
-        <slot />
+        <slot
+            @addShape="addShape"/>
 
     </div>
 

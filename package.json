@@ -1,16 +1,22 @@
 {
     "name": "can-vue",
     "version": "1.0.0",
-    "description": "Canvas + Vue",
-    "main": "index.js",
-    "keywords": [
-        "canvas",
-        "vue"
-    ],
+    "description": "",
+    "main": "lib/index.js",
+    "scripts": {
+        "prepublish": "node_modules/babel-cli/bin/babel.js src --out-dir lib"
+    },
+    "babel": {
+        "presets": [
+            "es2015"
+        ]
+    },
+    "keywords": [],
     "author": "",
     "license": "MIT",
-    "dependencies": {
-        "fh-components": "^1.4.5",
-        "konva": "^2.5.0"
+    "devDependencies": {
+        "babel-cli": "^6.26.0",
+        "babel-core": "^6.26.3",
+        "babel-preset-env": "^1.7.0"
     }
 }
