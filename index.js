@@ -1,5 +1,5 @@
-import Stage from './components/Stage.vue'
-import Shape from './components/Shape.vue'
+import Stage from 'src/components/Stage.vue'
+import Shape from 'src/components/Shape.vue'
 
 export default {
     install(Vue, opts = {}) {
