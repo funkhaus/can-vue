@@ -2,7 +2,6 @@
 
     <div class="can-vue wrapper">
 
-        <!-- TODO: place width and height on wrapper -->
         <canvas
             class="canvas"
             :width="cmpWidth"
