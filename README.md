@@ -38,7 +38,7 @@ Then, in a [single-file component](https://vuejs.org/v2/guide/single-file-compon
 
 The `can-vue` element creates a div with the class `can-vue` and a canvas that fills that div. You can either size `.can-vue` in CSS to control the size of the canvas or add `height` and `width` props to the `can-vue` element.
 
-You can then add [shapes from Konva](https://konvajs.github.io/docs/shapes/Rect.html) inside the `can-vue` element:
+You can then add [shapes from Konva](https://konvajs.github.io/docs/shapes/Rect.html) inside the `can-vue` element with the `draw-shape` element and some props:
 
 ```html
 <template>
