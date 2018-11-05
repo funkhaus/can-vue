@@ -16,7 +16,9 @@
 
 <script>
 import rect from 'fh-components/mixins/rect'
-import Konva from 'konva'
+import Konva from 'konva/src/Core'
+import 'konva/src/shapes/rect'
+import 'konva/src/shapes/circle'
 
 let layer = null
 
