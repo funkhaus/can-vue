@@ -1,12 +1,13 @@
 {
     "name": "can-vue",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Canvas + Vue.js, nice and straightforward.",
     "main": "dist/can-vue.js",
     "scripts": {
-        "build": "rimraf ./dist && webpack --config ./webpack.config.js",
+        "build": "rimraf ./dist && NODE_ENV=production webpack --config ./webpack.config.js",
         "analyze": "webpack --profile --json > stats.json && webpack-bundle-analyzer ./stats.json",
-        "prepublish": "npm run build"
+        "prepublish": "npm run build",
+        "dev": "rimraf ./dist && NODE_ENV=development webpack --watch --config ./webpack.config.js"
     },
     "keywords": [],
     "author": "",

@@ -6,7 +6,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 const config = {
-    mode: 'production',
+    mode: process.env.NODE_ENV,
     output: {
         path: path.resolve(__dirname + '/dist/')
     },
@@ -49,7 +49,10 @@ const config = {
         ]
     },
     externals: {},
-    plugins: [new VueLoaderPlugin()]
+    plugins: [new VueLoaderPlugin()],
+    optimization: {
+        minimize: process.env.NODE_ENV === 'production'
+    }
 }
 
 module.exports = [
