@@ -1,6 +1,6 @@
 {
     "name": "can-vue",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Canvas + Vue.js, nice and straightforward.",
     "main": "dist/can-vue.js",
     "scripts": {
@@ -10,6 +10,10 @@
     "keywords": [],
     "author": "",
     "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/funkhaus/can-vue.git"
+    },
     "devDependencies": {
         "@babel/core": "^7.1.2",
         "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
