@@ -27,12 +27,16 @@ Then, in a [single-file component](https://vuejs.org/v2/guide/single-file-compon
 
         <can-vue>
 
+            <!-- your canvas content here! -->
+
         </can-vue>
 
     </main>
 
 </template>
 ```
+
+The `can-vue` element creates a div with the class `can-vue` and a canvas that fills that div. You can either size `.can-vue` in CSS to control the size of the canvas or add `height` and `width` props to the `can-vue` element.
 
 You can then add [shapes from Konva](https://konvajs.github.io/docs/shapes/Rect.html) inside the `can-vue` element:
 
@@ -43,6 +47,12 @@ You can then add [shapes from Konva](https://konvajs.github.io/docs/shapes/Rect.
 
         <can-vue>
 
+            <draw-shape
+                shape="circle"
+                x="100"
+                y="100"
+                height="25"
+                fill="red"/>
 
 
         </can-vue>
@@ -51,5 +61,9 @@ You can then add [shapes from Konva](https://konvajs.github.io/docs/shapes/Rect.
 
 </template>
 ```
+
+## API
+
+**TODO**
 
 ## Contributing
