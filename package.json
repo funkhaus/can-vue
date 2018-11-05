@@ -9,7 +9,10 @@
         "prepublish": "npm run build",
         "dev": "rimraf ./dist && NODE_ENV=development webpack --watch --config ./webpack.config.js"
     },
-    "keywords": [],
+    "keywords": [
+        "vue",
+        "canvas"
+    ],
     "author": "",
     "license": "MIT",
     "repository": {

@@ -5,8 +5,6 @@
 </template>
 
 <script>
-// TODO: computed dimensions and position, in order to allow percentage values
-
 export default {
     props: {
         fill: {
