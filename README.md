@@ -67,3 +67,9 @@ You can then add [shapes from Konva](https://konvajs.github.io/docs/shapes/Rect.
 **TODO**
 
 ## Contributing
+
+**TODO**
+
+## What about [vue-konva](https://konvajs.github.io/docs/vue/)?
+
+Vue-Konva is great, but it's a bit more complicated than can-vue in order to support Konva's full feature set. I was looking for a simple, reactive canvas framework for Vue and, since Vue-Konva [isn't reactive](https://github.com/konvajs/vue-konva/issues/24), made a quick version of my own.
