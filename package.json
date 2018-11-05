@@ -5,7 +5,8 @@
     "main": "dist/can-vue.js",
     "scripts": {
         "build": "rimraf ./dist && webpack --config ./webpack.config.js",
-        "analyze": "webpack --profile --json > stats.json && webpack-bundle-analyzer ./stats.json"
+        "analyze": "webpack --profile --json > stats.json && webpack-bundle-analyzer ./stats.json",
+        "prepublish": "npm run build"
     },
     "keywords": [],
     "author": "",
