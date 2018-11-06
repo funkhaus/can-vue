@@ -1,6 +1,6 @@
 {
     "name": "can-vue",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "Canvas + Vue.js, nice and straightforward.",
     "main": "dist/can-vue.js",
     "scripts": {

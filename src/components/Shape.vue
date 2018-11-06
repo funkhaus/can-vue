@@ -15,7 +15,23 @@ export default {
             type: [String, Number],
             default: 100
         },
+        offsetX: {
+            type: [String, Number],
+            default: 0
+        },
+        offsetY: {
+            type: [String, Number],
+            default: 0
+        },
         opacity: {
+            type: [String, Number],
+            default: 1
+        },
+        scaleX: {
+            type: [String, Number],
+            default: 1
+        },
+        scaleY: {
             type: [String, Number],
             default: 1
         },
@@ -50,7 +66,11 @@ export default {
             width: this.filterPercentage(this.width),
             height: this.filterPercentage(this.height, false),
             fill: this.fill,
-            opacity: this.filterPercentage(this.opacity)
+            opacity: this.filterPercentage(this.opacity),
+            offsetX: this.filterPercentage(this.offsetX),
+            offsetY: this.filterPercentage(this.offsetY),
+            scaleX: this.scaleX,
+            scaleY: this.scaleY
         }
 
         this.id = this.$parent.addShape(this.opts)
@@ -72,70 +92,81 @@ export default {
                 percentage *
                 (isHorizontal ? this.$parent.cmpWidth : this.$parent.cmpHeight)
             )
+        },
+        filterLocalPercentage(val, isHorizontal = true) {
+            // ignore if we're a number or we don't have a percent sign
+            if (typeof val === 'number' || !val.includes('%')) {
+                return parseInt(val)
+            }
+
+            const percentage = parseInt(val) / 100
+            return (
+                percentage *
+                (isHorizontal
+                    ? this.filterPercentage(this.width)
+                    : this.filterPercentage(this.height, true))
+            )
+        },
+        updateHorizontal() {
+            // get values
+            const x = this.filterPercentage(this.x)
+            const width = this.filterPercentage(this.width) * this.scaleX
+            const offsetX = this.filterPercentage(this.offsetX)
+
+            // update shape values
+            this.$parent.updateShape(this.id, 'x', x)
+            this.$parent.updateShape(this.id, 'width', width)
+            this.$parent.updateShape(this.id, 'offsetX', offsetX)
+        },
+        updateVertical() {
+            // get values
+            const y = this.filterPercentage(this.y, false)
+            const height =
+                this.filterPercentage(this.height, false) * this.scaleY
+            const offsetY = this.filterPercentage(this.offsetY, false)
+
+            // update shape values
+            this.$parent.updateShape(this.id, 'y', y)
+            this.$parent.updateShape(this.id, 'height', height)
+            this.$parent.updateShape(this.id, 'offsetY', offsetY)
         }
     },
     watch: {
         x(newVal) {
-            this.$parent.updateShape(
-                this.id,
-                'x',
-                this.filterPercentage(newVal)
-            )
+            this.updateHorizontal()
         },
         y(newVal) {
-            this.$parent.updateShape(
-                this.id,
-                'y',
-                this.filterPercentage(newVal, false)
-            )
+            this.updateVertical()
         },
         width(newVal) {
-            this.$parent.updateShape(
-                this.id,
-                'width',
-                this.filterPercentage(newVal)
-            )
+            this.updateHorizontal()
         },
         height(newVal) {
-            this.$parent.updateShape(
-                this.id,
-                'height',
-                this.filterPercentage(newVal, false)
-            )
+            this.updateVertical()
         },
         fill(newVal) {
             this.$parent.updateShape(this.id, 'fill', newVal)
         },
+        offsetX(newVal) {
+            this.updateHorizontal()
+        },
+        offsetY(newVal) {
+            this.updateVertical()
+        },
         opacity(newVal) {
             this.$parent.updateShape(this.id, 'opacity', newVal)
         },
-        '$parent.cmpWidth'(newVal) {
-            // recalculate horizontal dimensions & positions
-            this.$parent.updateShape(
-                this.id,
-                'width',
-                this.filterPercentage(this.width)
-            )
-
-            this.$parent.updateShape(
-                this.id,
-                'x',
-                this.filterPercentage(this.x)
-            )
+        scaleX(newVal) {
+            this.updateHorizontal()
         },
-        '$parent.cmpHeight'(newVal) {
-            // recalculate vertical dimensions & positions
-            this.$parent.updateShape(
-                this.id,
-                'height',
-                this.filterPercentage(this.height, false)
-            )
-
-            this.$parent.updateShape(
-                this.id,
-                'y',
-                this.filterPercentage(this.y, false)
-            )
+        scaleY(newVal) {
+            this.updateVertical()
+        },
+        '$parent.cmpWidth'() {
+            this.updateHorizontal()
+        },
+        '$parent.cmpHeight'() {
+            this.updateVertical()
         }
     }
 }
